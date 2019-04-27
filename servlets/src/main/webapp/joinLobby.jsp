@@ -35,8 +35,8 @@
                 </thead>
                 <tbody id="tableBody">
                     <c:forEach items="${ lobbyList }" var="lobby" varStatus="status">
-                        <tr class='lobby'> <th>${lobby.getUUID()}</th> <th>${lobby.getName()}</th> <th>${lobby.getRule().getDescription()}</th> <th>${lobby.getNumberOfPlayer()}/4</th> </tr>;
-                    </c:forEach>
+                        <tr class='lobby'> <th>${lobby.getUUID()}</th> <th>${lobby.getName()}</th> <th>${lobby.getRule()}</th> <th>${lobby.getNumberOfPlayer()}/4</th> </tr>;
+                            </c:forEach>
                 </tbody>
             </table>
 
@@ -84,8 +84,8 @@
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {
                     if (Http.status === 200) {
-                        let playerId=e.currentTarget.response;
-                        window.location.href = "/lobby?lobbyId=" + lobbyId + "&playerId="+playerId;
+                        let playerId = e.currentTarget.response;
+                        window.location.href = "/lobby?lobbyId=" + lobbyId + "&playerId=" + playerId;
                     } else {
                         alert("You can't join this lobby");
                     }

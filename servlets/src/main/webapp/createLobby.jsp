@@ -71,7 +71,10 @@
             <div id="Rules">
                 <h3>Choose a rule</h3>
                 <select class="lobbyParameter" id="ruleInput">
-                    <option ${rule=="traditionnal" ? "selected": ""}>Traditionnal</option>
+                    <c:forEach items="${rules}" var="rule" varStatus="status">
+                        <option ${selectedRule==rule ? "selected": ""}>${rule}</option>
+                    </c:forEach>
+
                     <option>...</option>
                 </select>
             </div>
@@ -112,8 +115,11 @@
                 let visibility = visibilities.options[visibilities.selectedIndex].value;
 
                 let rules = document.getElementById("ruleInput");
-                let rule = rules.options[rules.selectedIndex].value;
-
+                //TODO
+                /*
+                 let rule = rules.options[rules.selectedIndex].value;
+                 */
+                let rule = "Traditionnal";
                 let playTime = document.getElementById("discardTime-handle").innerHTML;
 
                 let stealTime = document.getElementById("pickTime-handle").innerHTML;
